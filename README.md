@@ -40,6 +40,26 @@ Monday --> rework or respond
 
 Tuesday - session / recap + next
 
+## Suggested weekly flow - Thursday Batch
+
+Thursday - session - clone + read assignment code
+
+---
+
+ Monday  --> commit 'at least / latest' by EoD (multiple commits permitted)
+
+---
+
+ Tuesday  --> Latest commit will be picked for review
+
+---
+
+Wednesday --> rework or respond
+
+---
+
+Thursday - session / recap + next
+
 
 ## Try It
 
