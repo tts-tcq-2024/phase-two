@@ -62,8 +62,9 @@ Thursday - session / recap + next
 
 
 ## Try It
+[Build Safety Net](testCover.md)    
 
-[Paradigm shift](paradigm-shift.md)
+[Paradigm shift](paradigm-shift.md)  &nbsp;&nbsp;&nbsp; [Recap](paradigm-shift-recap.md)
 
 ## References
 
