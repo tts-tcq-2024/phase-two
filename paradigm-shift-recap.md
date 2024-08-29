@@ -40,6 +40,35 @@ int batteryIsOk(float temperature, float soc, float chargeRate)
   return 1;
 }
 ```
+```C++
+bool batteryIsOk(float temperature, float soc, float chargeRate) 
+{
+  bool tempOk = isTemperatureOk(temperature);
+  bool socOk = isSocOk(soc);
+  bool chargeRateOk = isChargeRateOk(chargeRate);
+
+  if (tempOk && socOk && chargeRateOk)
+  {
+    return true;
+  }    
+
+  if(!tempOk)
+  {
+    cout << "Temperature out of range!" << endl;
+  }
+
+  if(!socOk)
+  {
+    cout << "State of Charge out of range!" << endl;
+  }
+
+  if(!chargeRateOk)
+  {
+    cout << "Charge rate out of range!" << endl;
+  }
+  
+}
+```
 # Reusable Code With Assumptions
 ```c
 int isParameterWithinLimits(float value, float min, float max, const char* message) {
