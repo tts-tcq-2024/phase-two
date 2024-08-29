@@ -39,7 +39,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate)
   
   return 1;
 }
-```c
+```
 # Reusable Code With Assumptions
 ```c
 int isParameterWithinLimits(float value, float min, float max, const char* message) {
