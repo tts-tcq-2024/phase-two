@@ -122,6 +122,26 @@ int batteryIsOk(float temperature, float soc, float chargeRate)
 }
 
 ```
+
+# Allow Code to Express Reality
+```py
+TEMP_MIN = 0
+"""Minimum acceptable temperature for the battery in degrees Celsius."""
+
+TEMP_MAX = 45
+"""Maximum acceptable temperature for the battery in degrees Celsius."""
+
+SOC_MIN = 20
+"""Minimum acceptable state of charge (SoC) for the battery in percentage."""
+
+SOC_MAX = 80
+"""Maximum acceptable state of charge (SoC) for the battery in percentage."""
+
+CHARGE_RATE_MAX = 0.8
+"""Maximum acceptable charge rate for the battery (0.8 or less)."""
+
+
+```
 # Side Effect ?
 ```c
 #define OK 1
