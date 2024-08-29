@@ -102,6 +102,14 @@ int CheckInRange(float value, float min, float max, const char* parameterName)
 return 1;
 }
 ```
+```c
+int checkingInRange(float value, float min, float max, const char* parameterName){
+   if(value<min || value>max){
+       printf("%s out of range\n, parameterName);
+       return 0;}
+   return 1;
+}
+```
 # Violation Of Principle of Least Knowledge
 ```c
 int TempeartureSocIsOk(float temperature, float soc){
@@ -141,6 +149,44 @@ CHARGE_RATE_MAX = 0.8
 """Maximum acceptable charge rate for the battery (0.8 or less)."""
 
 
+```
+```Py
+# All values within range
+    assert (battery_is_ok(25, 70, 0.7) is True)
+    # Boundary values within range
+    assert (battery_is_ok(0, 20, 0.8) is True)
+    # Boundary values within range
+    assert (battery_is_ok(45, 80, 0.8) is True)
+    # Typical values within range
+    assert (battery_is_ok(30, 50, 0.8) is True)
+    # Typical values within range
+    assert (battery_is_ok(25, 30, 0.5) is True)
+
+    # Invalid scenarios
+    # Temperature below minimum
+    assert (battery_is_ok(-1, 70, 0.7) is False)
+    # SoC below minimum
+    assert (battery_is_ok(25, 19, 0.7) is False)
+    # Charge rate above maximum
+    assert (battery_is_ok(25, 70, 0.9) is False)
+    # Temperature above maximum
+    assert (battery_is_ok(46, 70, 0.7) is False)
+    # SoC above maximum
+    assert (battery_is_ok(25, 81, 0.7) is False)
+    # Charge rate above maximum
+    assert (battery_is_ok(25, 70, 0.81) is False)
+
+    # Edge cases
+    # Lower bounds of temperature, SoC, and charge rate
+    assert (battery_is_ok(0, 20, 0.8) is True)
+    # Upper bounds of temperature, SoC, and charge rate
+    assert (battery_is_ok(45, 80, 0.8) is True)
+    # SoC at upper bound with temperature at lower bound
+    assert (battery_is_ok(0, 81, 0.8) is False)
+    # Temperature at upper bound with SoC at lower bound
+    assert (battery_is_ok(46, 20, 0.8) is False)
+    # Charge rate at upper bound with valid temperature and SoC
+    assert (battery_is_ok(25, 80, 0.81) is False)
 ```
 # Side Effect ?
 ```c
@@ -249,4 +295,19 @@ bool isChargeRateOk(float chargeRate)
 {
   return(chargeRate <= 0.8);
 }
+```
+
+```py
+def is_within_range(value, min_value, max_value):
+    """Check if a value is within the specified range.
+    Args:
+        value (float): The value to check.
+        min_value (float): The minimum acceptable value (inclusive).
+        max_value (float): The maximum acceptable value (inclusive).
+
+    Returns:
+        bool: True if the value is within the range [min_value, max_value];
+        False otherwise.
+    """
+    return min_value <= value <= max_value
 ```
