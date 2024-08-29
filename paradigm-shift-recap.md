@@ -122,7 +122,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate)
 }
 
 ```
-# Side Effect
+# Side Effect ?
 ```c
 #define OK 1
 #define NOT_OK 0
