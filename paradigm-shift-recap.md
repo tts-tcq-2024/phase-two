@@ -182,3 +182,22 @@ void runTests() {
     assert(batteryIsOk(50, 85, 0.9) == false);
 }
 ```
+
+# Pure Functions in Action
+```c++
+
+bool isTemperatureOk(float temperature)
+{
+  return(temperature >= 0 && temperature <= 45);
+}
+
+bool isSocOk(float soc)
+{
+  return(soc >=20 && soc <=80);
+}
+
+bool isChargeRateOk(float chargeRate)
+{
+  return(chargeRate <= 0.8);
+}
+```
