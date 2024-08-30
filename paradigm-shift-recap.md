@@ -25,6 +25,28 @@ int checkChargeRate(float chargeRate) {
 }
 ```
 
+```C
+bool isValueInRange(float minimum, float maximum, float value, const string& parameter)
+{
+  if (value < minimum || value > maximum)
+  {
+    printOutOfRange(parameter);
+    return false;
+  }
+  return true;
+}
+
+bool isValueGreaterThan(float maximum, float value, const string& parameter)
+{
+  if (value > maximum)
+  {
+    printOutOfRange(parameter);
+    return false;
+  }
+  return true;
+}
+```
+
 # Bug Induced
 ```c
 int batteryIsOk(float temperature, float soc, float chargeRate) 
@@ -38,35 +60,6 @@ int batteryIsOk(float temperature, float soc, float chargeRate)
   ChargeRate(chargeRate);
   
   return 1;
-}
-```
-```C++
-bool batteryIsOk(float temperature, float soc, float chargeRate) 
-{
-  bool tempOk = isTemperatureOk(temperature);
-  bool socOk = isSocOk(soc);
-  bool chargeRateOk = isChargeRateOk(chargeRate);
-
-  if (tempOk && socOk && chargeRateOk)
-  {
-    return true;
-  }    
-
-  if(!tempOk)
-  {
-    cout << "Temperature out of range!" << endl;
-  }
-
-  if(!socOk)
-  {
-    cout << "State of Charge out of range!" << endl;
-  }
-
-  if(!chargeRateOk)
-  {
-    cout << "Charge rate out of range!" << endl;
-  }
-  
 }
 ```
 # Reusable Code With Assumptions
@@ -110,6 +103,15 @@ int checkingInRange(float value, float min, float max, const char* parameterName
    return 1;
 }
 ```
+```c
+bool checkRange(float value, float min, float max, const string& message) {
+  if (value < min || value > max) {
+    cout << message << endl;
+    return false;
+  }
+  return true;
+}
+```
 # Violation Of Principle of Least Knowledge
 ```c
 int TempeartureSocIsOk(float temperature, float soc){
@@ -130,8 +132,32 @@ int batteryIsOk(float temperature, float soc, float chargeRate)
 }
 
 ```
+```py
+def battery_is_ok(temperature, soc, charge_rate, reporter=print):
+    checks = [
+        (temperature, 0, 45, 'Temperature'),
+        (soc, 20, 80, 'State of Charge'),
+        (charge_rate, 0, 0.8, 'Charge rate')
+    ]
+    
+    return all(check_threshold(value, lower, upper, name, reporter) for value, lower, upper, name in checks)
+```
 
 # Allow Code to Express Reality
+```c
+// Function to verify minimum and maximum temperature
+bool checkTemperature(float temperature)
+// Function to verify minimum and maximum SOC value
+bool checkSoc(float soc)
+// Function to verify maximum charge rate
+bool checkChargeRate(float chargeRate)
+
+ // Temperature < 0, rest optimal
+assert(batteryIsOk(-0.1, 70, 0.1) == false);
+// Temperature > 45, rest optimal
+assert(batteryIsOk(45.1, 70, 0.3) == false);
+```
+
 ```py
 TEMP_MIN = 0
 """Minimum acceptable temperature for the battery in degrees Celsius."""
@@ -147,7 +173,6 @@ SOC_MAX = 80
 
 CHARGE_RATE_MAX = 0.8
 """Maximum acceptable charge rate for the battery (0.8 or less)."""
-
 
 ```
 ```Py
@@ -187,6 +212,14 @@ CHARGE_RATE_MAX = 0.8
     assert (battery_is_ok(46, 20, 0.8) is False)
     # Charge rate at upper bound with valid temperature and SoC
     assert (battery_is_ok(25, 80, 0.81) is False)
+```
+```py
+ assert(battery_is_ok(25, 70, 0.7) is True)
+    assert(battery_is_ok(50, 85, 0) is False)  # High temperature, high soc, low charge rate
+    assert(battery_is_ok(-5, 70, 0.7) is False)  # Low temperature
+    assert(battery_is_ok(25, 15, 0.7) is False)  # Low State of Charge
+    assert(battery_is_ok(25, 70, 0.9) is False)  # High charge rate
+    assert(battery_is_ok(50, 70, 0.7, custom_reporter) is False)  # Using a custom reporter
 ```
 # Side Effect ?
 ```c
@@ -277,6 +310,7 @@ void runTests() {
     assert(batteryIsOk(50, 85, 0.9) == false);
 }
 ```
+- https://github.com/tts-tcq-2024/paradigm-shift-in-cpp-AnkitRawat1710.git
 
 # Pure Functions in Action
 ```c++
@@ -311,3 +345,31 @@ def is_within_range(value, min_value, max_value):
     """
     return min_value <= value <= max_value
 ```
+## Optimistic Code (Be Pesimistic)
+```c
+bool batteryIsOk(float temperature, float soc, float chargeRate) {
+    bool isOk = true; // Assume battery is okay by default
+
+    // Check temperature
+    if (temperature < 0 || temperature > 45) {
+        cout << "Temperature out of range!\n";
+        isOk = false;
+    }
+    
+    // Check state of charge
+    if (soc < 20 || soc > 80) {
+        cout << "State of Charge out of range!\n";
+        isOk = false;
+    }
+    
+    // Check charge rate
+    if (chargeRate > 0.8) {
+        cout << "Charge Rate out of range!\n";
+        isOk = false;
+    }
+
+    return isOk; // Return the final status
+}
+
+```
+
