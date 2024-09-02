@@ -62,6 +62,20 @@ int batteryIsOk(float temperature, float soc, float chargeRate)
   return 1;
 }
 ```
+```c
+int batteryIsOk(float temperature, float soc, float chargeRate) {
+    int temp_ok = !isTemperatureOk(temperature);
+    int soc_ok = !isSocOk(soc);
+    int charge_ok = !isChargeRateOk(chargeRate);
+    
+    disp_temp(temp_ok);
+    disp_soc(soc_ok);
+    disp_cr(charge_ok);
+    
+    return 1;
+}
+```
+
 # Reusable Code With Assumptions
 ```c
 int isParameterWithinLimits(float value, float min, float max, const char* message) {
