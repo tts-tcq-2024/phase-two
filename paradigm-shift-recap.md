@@ -156,6 +156,10 @@ def battery_is_ok(temperature, soc, charge_rate, reporter=print):
     
     return all(check_threshold(value, lower, upper, name, reporter) for value, lower, upper, name in checks)
 ```
+```cs
+  static bool isCRateOk(float cRate)
+        {...}
+ ```
 
 # Allow Code to Express Reality
 ```c
