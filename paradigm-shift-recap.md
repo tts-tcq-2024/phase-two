@@ -75,7 +75,21 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
     return 1;
 }
 ```
-
+```js
+function batteryIsOk(temperature, soc, chargeRate) {
+    const conditions = [
+        { check: temperature < 0 || temperature > 45, message: "Temperature is out of range!" },
+        { check: soc < 20 || soc > 80, message: "State of Charge is out of range!" },
+        { check: chargeRate > 0.8, message: "Charge Rate is out of range!" }
+    ];
+    for (const condition of conditions) {
+        if (condition.check) {
+            console.log(condition.message);
+            return false;
+        }
+    }
+    return true;
+```
 # Reusable Code With Assumptions
 ```c
 int isParameterWithinLimits(float value, float min, float max, const char* message) {
