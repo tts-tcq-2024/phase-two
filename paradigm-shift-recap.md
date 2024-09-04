@@ -404,8 +404,7 @@ bool batteryIsOk(float temperature, float soc, float chargeRate) {
 }
 
 ```
-
-#DIP Violation
+# DIP Violation
 ```py
 
 class Reporter:
