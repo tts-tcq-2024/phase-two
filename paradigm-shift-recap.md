@@ -405,3 +405,15 @@ bool batteryIsOk(float temperature, float soc, float chargeRate) {
 
 ```
 
+#DIP Violation
+```py
+
+class Reporter:
+    def report(self, parameter, breach):
+        print(f"{parameter} is {breach}!")
+
+class BatteryChecker:
+    def __init__(self, reporter=None):
+        self.reporter = reporter or Reporter()
+
+```
