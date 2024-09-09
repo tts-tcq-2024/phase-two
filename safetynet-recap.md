@@ -7,12 +7,16 @@ static const char* mappings = "01230120022455012623010202";
 
 # Good Spread Of  Functionality
 https://github.com/tts-tcq-2024/build-safety-net-in-cpp-mani195/blob/main/Soundex.h
+https://github.com/tts-tcq-2024/build-safety-net-in-java-SindhuRdk
 
 # Fat Interface 
 https://github.com/tts-tcq-2024/build-safety-net-in-cpp-mani195/blob/main/Soundex.h
 
 # Good Spread of TestCases (Optimized)
 https://github.com/tts-tcq-2024/build-safety-net-in-cpp-Harish-C-15/blob/main/Soundex.Tests.cpp
+
+# Value Parameetrized Test
+https://github.com/tts-tcq-2024/build-safety-net-in-cpp-JayanthAkash/blob/main/Soundex.Tests.cpp
 
 # Switch Case Reduction
 ```C++
