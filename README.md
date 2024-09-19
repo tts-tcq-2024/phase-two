@@ -62,6 +62,7 @@ Thursday - session / recap + next
 
 
 ## Try It
+
 [Being Principled](srp.md) &nbsp;&nbsp;&nbsp;
 
 [TDD In Practice](tdd-in-practice.md)
