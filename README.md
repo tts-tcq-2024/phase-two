@@ -62,6 +62,8 @@ Thursday - session / recap + next
 
 
 ## Try It
+[Being Principled](srp.md) &nbsp;&nbsp;&nbsp;
+
 [TDD In Practice](tdd-in-practice.md)
 
 [Build Safety Net](testCover.md)    &nbsp;&nbsp;&nbsp; [Recap](safetynet-recap.md)
