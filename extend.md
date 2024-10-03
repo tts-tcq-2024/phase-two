@@ -12,7 +12,7 @@ This assignment is a continuation in the [Paradigm Shift](paradigm-shift.md).
 ## Extensions
 
 Try the below  extensions on your code.
-Mention the extensions you select in your `README.md` file.
+Mention your approach or experience in adopting the extensions in your `README.md` file.
 
 ### Extension : Early Warning
 Customers need _early warnings_ to take action,
