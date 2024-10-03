@@ -63,6 +63,8 @@ Thursday - session / recap + next
 
 ## Try It
 
+[Refactor](extend.md) &nbsp;&nbsp;&nbsp;
+
 [Being Principled](srp.md) &nbsp;&nbsp;&nbsp;
 
 [TDD In Practice](tdd-in-practice.md)
