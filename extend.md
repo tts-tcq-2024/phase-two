@@ -11,10 +11,10 @@ This assignment is a continuation in the [Paradigm Shift](paradigm-shift.md).
 
 ## Extensions
 
-Try at least **One** of these extensions on your code.
+Try the below  extensions on your code.
 Mention the extensions you select in your `README.md` file.
 
-### Extension 1: Early Warning
+### Extension : Early Warning
 Customers need _early warnings_ to take action,
 in addition to the alarm that you print after the limit is breached.
 Introduce a 'warning' level with a tolerance of 5% of the upper-limit.
