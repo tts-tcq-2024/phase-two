@@ -63,6 +63,10 @@ Thursday - session / recap + next
 
 ## Try It
 
+[Conclusive](conclusive.md)
+
+[Fail On Flase Positive](fail-test.md)
+
 [Refactor](extend.md) &nbsp;&nbsp;&nbsp;
 
 [Being Principled](srp.md) &nbsp;&nbsp;&nbsp;
